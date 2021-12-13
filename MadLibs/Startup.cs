@@ -20,7 +20,7 @@ namespace MadLibs
 
     public void ConfigureServices(IServiceCollection services)
     {
-      services.AddMvc();
+      services.AddMvc(option => option.EnableEndpointRouting = false);
     }
 
     public void Configure(IApplicationBuilder app)
@@ -31,10 +31,10 @@ namespace MadLibs
       app.UseEndpoints(routes =>{
         routes.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
       });
-      app.Run(async (context) =>
-      {
-        await context.Response.WriteAsync("<h1>Hello World!</h1>");
-      });
+      // app.Run(async (context) =>
+      // {
+      //   await context.Response.WriteAsync("<h1>Hello World!</h1>");
+      // });
     }
   }
 }
